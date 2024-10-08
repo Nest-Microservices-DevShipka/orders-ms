@@ -6,6 +6,11 @@ import * as joi from 'joi';
 //valida que el puerto sea un numero
 interface EnvVars{
     PORT: number;
+<<<<<<< HEAD
+=======
+    PRODUCTS_MICROSERVICE_PORT: number;
+    PRODUCTS_MICROSERVICE_HOST: string;
+>>>>>>> 1f59b87 (Codigo antes de NATS)
 }
 
 // El puerto tiene que ser obligatorio
@@ -13,6 +18,11 @@ interface EnvVars{
 const envSchema = joi.object({
 
     PORT: joi.number().required(),
+<<<<<<< HEAD
+=======
+    PRODUCTS_MICROSERVICE_PORT: joi.number().required(),
+    PRODUCTS_MICROSERVICE_HOST: joi.string().required(),
+>>>>>>> 1f59b87 (Codigo antes de NATS)
 })
 .unknown(true);
 
@@ -29,4 +39,10 @@ const envVars: EnvVars = value;
 
 export const envs ={
     port: envVars.PORT,
+<<<<<<< HEAD
+=======
+
+    productsMicroservicesHost: envVars.PRODUCTS_MICROSERVICE_HOST,
+    productsMicroservicesPort: envVars.PRODUCTS_MICROSERVICE_PORT,
+>>>>>>> 1f59b87 (Codigo antes de NATS)
 }

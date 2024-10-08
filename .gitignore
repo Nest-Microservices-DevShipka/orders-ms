@@ -3,6 +3,12 @@
 /node_modules
 /build
 
+<<<<<<< HEAD
+=======
+# Database
+postgres/
+
+>>>>>>> 1f59b87 (Codigo antes de NATS)
 # Logs
 logs
 *.log
