@@ -6,11 +6,10 @@ import * as joi from 'joi';
 //valida que el puerto sea un numero
 interface EnvVars{
     PORT: number;
-<<<<<<< HEAD
-=======
-    PRODUCTS_MICROSERVICE_PORT: number;
-    PRODUCTS_MICROSERVICE_HOST: string;
->>>>>>> 1f59b87 (Codigo antes de NATS)
+    // PRODUCTS_MICROSERVICE_PORT: number;
+    // PRODUCTS_MICROSERVICE_HOST: string;
+    
+    NATS_SERVERS: string[];
 }
 
 // El puerto tiene que ser obligatorio
@@ -18,16 +17,20 @@ interface EnvVars{
 const envSchema = joi.object({
 
     PORT: joi.number().required(),
-<<<<<<< HEAD
-=======
-    PRODUCTS_MICROSERVICE_PORT: joi.number().required(),
-    PRODUCTS_MICROSERVICE_HOST: joi.string().required(),
->>>>>>> 1f59b87 (Codigo antes de NATS)
+    // PRODUCTS_MICROSERVICE_PORT: joi.number().required(),
+    // PRODUCTS_MICROSERVICE_HOST: joi.string().required(),
+    
+    NATS_SERVERS: joi.array().items( joi.string() ).required(),
 })
 .unknown(true);
 
 // desestructura esas variables del .env
-const { error, value } = envSchema.validate( process.env );
+const { error, value } = envSchema.validate( {
+    ...process.env,
+    NATS_SERVERS: process.env.NATS_SERVERS?.split(',')
+} );
+
+//
 
 //creacion del mensaje de error
 if(error){
@@ -39,10 +42,9 @@ const envVars: EnvVars = value;
 
 export const envs ={
     port: envVars.PORT,
-<<<<<<< HEAD
-=======
 
-    productsMicroservicesHost: envVars.PRODUCTS_MICROSERVICE_HOST,
-    productsMicroservicesPort: envVars.PRODUCTS_MICROSERVICE_PORT,
->>>>>>> 1f59b87 (Codigo antes de NATS)
+    natsServers: envVars.NATS_SERVERS,
+
+    // productsMicroservicesHost: envVars.PRODUCTS_MICROSERVICE_HOST,
+    // productsMicroservicesPort: envVars.PRODUCTS_MICROSERVICE_PORT,
 }

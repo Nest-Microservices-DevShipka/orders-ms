@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-export class CreateOrderDto {}
-=======
 import { ArrayMinSize, IsArray, ValidateNested } from "class-validator";
 import { Type } from "class-transformer";
 import { OrderItemDTO } from "./order-item.dto";
@@ -45,4 +42,3 @@ export class CreateOrderDto {
 
 
 }
->>>>>>> 1f59b87 (Codigo antes de NATS)
